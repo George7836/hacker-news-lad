@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { ReactComponent as ReloadIcon } from './../assets/icons/reload.svg'
 import { ReactComponent as HackerNewsIcon } from './../assets/icons/hv.svg'
+import ReloadBtn from './ReloadBtn'
 
 const HeaderContainer = styled.header`
   display: flex;
@@ -20,22 +21,6 @@ const Logo = styled.a`
   & h1 {
     margin-left: 10px;
     font-size: inherit;
-  }
-`
-const ReloadBtn = styled.button`
-  width: 42px;
-  height: 42px;
-  position: relative;
-  padding: 0;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-
-  svg {
-    position: absolute; 
-		top: 50%; 
-		left: 50%; 
-		transform: translate(-50%,-50%); 
   }
 `
 

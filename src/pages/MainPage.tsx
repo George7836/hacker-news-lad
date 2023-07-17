@@ -1,6 +1,15 @@
+import { styled } from "styled-components";
+import NewsList from "../components/NewsList";
+
+const Title = styled.h2`
+  margin-bottom: 20px;
+`
 
 export default function MainPage() {
   return (
-    <div>MainPage</div>
+    <>
+      <Title>News</Title>
+      <NewsList/>
+    </>
   )
 }
