@@ -4,6 +4,8 @@ import { getOneNews } from "../api/getOneNews"
 import { INewsPage } from "../types/news"
 import styled from "styled-components"
 import { getDate } from "../utils/getDate"
+import { Preloader } from "../styles/Preloader"
+import { ReactComponent as Spinner } from '../assets/icons/spinner.svg'
 
 const Card = styled.div`
   display: flex;
@@ -48,13 +50,19 @@ export default function NewsPage() {
 
   return (
     <>
-      <Card>
-        <Title>{item?.title}</Title>
-        <NewsLink href={item?.url} target="_blank">{item?.url}</NewsLink>
-        <Row>{getDate(item?.time)}</Row>
-        <Author>author: <span>{item?.user}</span></Author>
-        <Row>comments: {item?.comments_count}</Row>
-      </Card>
+      {item !== undefined
+        ?  
+        <Card>
+          <Title>{item?.title}</Title>
+          <NewsLink href={item?.url} target="_blank">{item?.url}</NewsLink>
+          <Row>{getDate(item?.time)}</Row>
+          <Author>author: <span>{item?.user}</span></Author>
+          <Row>comments: {item?.comments_count}</Row>
+        </Card>
+        : 
+        <Preloader>
+          <Spinner/>
+        </Preloader>}
     </>
   )
 }

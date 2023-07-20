@@ -3,6 +3,8 @@ import NewsItem from './NewsItem'
 import { useAppDispatch, useAppSelector } from '../types/hooks'
 import { getAllNews, userSelector } from '../store/newsSlice'
 import { INews } from '../types/news'
+import { Preloader } from '../styles/Preloader'
+import { ReactComponent as Spinner } from '../assets/icons/spinner.svg'
 
 export default function NewsList() {
   const news = useAppSelector(userSelector)
@@ -19,7 +21,7 @@ export default function NewsList() {
 
   return (
    <>
-    {news.news.length > 0
+    {news.loading === false
       ? news.news.map((el: INews) => (
         <NewsItem
           key={el.id}
@@ -32,7 +34,10 @@ export default function NewsList() {
           newsNumber={news.news.indexOf(el) + 1}
         />
       ))
-      : null}
+      : 
+      <Preloader>
+        <Spinner/>
+      </Preloader>}
    </>
   )
 }
