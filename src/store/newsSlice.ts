@@ -21,7 +21,7 @@ export const getAllNews = createAsyncThunk(
 
       const res = await Promise.all(
         arr.map((_, page) => {
-          return fetch(`https://api.hnpwa.com/v0/newest/${page + 1}.json`)
+          return fetch(`https://api.hnpwa.com/v0/newest/${page + 1}.json`, {cache: 'no-store'})
             .then((res) => {
               if(!res.ok) {
                 throw new Error('Error!')
@@ -48,6 +48,7 @@ const newsSlice = createSlice({
       state.loading = true;
     }),
     builder.addCase(getAllNews.fulfilled, (state, action: PayloadAction<Array<INews>>) => {
+      state.loading = false;
       state.news = action.payload
     }),
     builder.addCase(getAllNews.rejected, (state, action) => {

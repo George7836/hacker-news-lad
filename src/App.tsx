@@ -4,10 +4,6 @@ import NewsPage from './pages/NewsPage'
 import Header from './components/Header'
 import GlobalStyles from './styles/GlobalStyles'
 import styled from 'styled-components'
-import { useEffect, useState } from 'react'
-import { useAppDispatch, useAppSelector } from './types/hooks'
-import { getAllNews, userSelector } from './store/newsSlice'
-import { INews } from './types/news'
 
 const Container = styled.div`
   max-width: 660px;

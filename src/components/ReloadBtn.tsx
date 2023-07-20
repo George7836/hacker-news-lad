@@ -3,6 +3,7 @@ import { styled } from 'styled-components'
 
 type ReloadBtnProps = {
   children: React.ReactNode
+  onClick?: () => void
 }
 
 const Reload = styled.button`
@@ -28,10 +29,10 @@ const Reload = styled.button`
   }
 `
 
-export default function ReloadBtn({children}: ReloadBtnProps) {
+export const ReloadBtn = (props: ReloadBtnProps) => {
   return (
-    <Reload> 
-      {children}
+    <Reload onClick={props.onClick}> 
+      {props.children}
     </Reload>
    )
 }

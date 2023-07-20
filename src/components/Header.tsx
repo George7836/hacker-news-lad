@@ -1,8 +1,10 @@
 import styled from 'styled-components'
 import { ReactComponent as ReloadIcon } from './../assets/icons/reload.svg'
 import { ReactComponent as HackerNewsIcon } from './../assets/icons/hv.svg'
-import ReloadBtn from './ReloadBtn'
+import { ReloadBtn } from './ReloadBtn'
 import { Link } from 'react-router-dom'
+import { getAllNews } from '../store/newsSlice'
+import { useAppDispatch } from '../types/hooks'
 
 const HeaderContainer = styled.header`
   display: flex;
@@ -28,13 +30,15 @@ const Logo = styled(Link)`
 `
 
 export default function Header() {
+  const dispatch = useAppDispatch()
+
   return (
     <HeaderContainer>
       <Logo to={'/'}>
         <HackerNewsIcon/>
         <h1>Hacker News</h1>
       </Logo>
-      <ReloadBtn>
+      <ReloadBtn onClick={() => dispatch(getAllNews())}>
         <ReloadIcon/>
       </ReloadBtn>
     </HeaderContainer>

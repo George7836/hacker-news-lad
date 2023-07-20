@@ -10,6 +10,11 @@ export default function NewsList() {
 
   useEffect(() => {
     dispatch(getAllNews())
+    const interval = setInterval(() => {
+      dispatch(getAllNews())
+    }, 60000)
+
+    return () => clearInterval(interval)
   }, [])
 
   return (
