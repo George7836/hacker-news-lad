@@ -13,6 +13,12 @@ const Reload = styled.button`
   border: none;
   background-color: transparent;
   cursor: pointer;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #ececec;
+  }
 
   svg {
     position: absolute; 

@@ -16,18 +16,6 @@ const Container = styled.div`
 `
 
 function App() {
-  const [myNews, setMyNews] = useState<INews[]>([])
-  const news = useAppSelector(userSelector)
-  const dispatch = useAppDispatch()
-
-  useEffect(() => {
-    setMyNews(news.news)
-  }, [news])
-
-  function foo() {
-    dispatch(getAllNews())
-  }
-
   return (
     <HashRouter basename='/'>
       <GlobalStyles/>
@@ -35,7 +23,7 @@ function App() {
       <Container>
         <Routes>
           <Route path='/' element={<MainPage/>}/>
-          <Route path='/news' element={<NewsPage/>}/>
+          <Route path='/:id' element={<NewsPage/>}/>
         </Routes>
       </Container>
     </HashRouter>

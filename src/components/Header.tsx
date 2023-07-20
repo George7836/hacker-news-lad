@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { ReactComponent as ReloadIcon } from './../assets/icons/reload.svg'
 import { ReactComponent as HackerNewsIcon } from './../assets/icons/hv.svg'
 import ReloadBtn from './ReloadBtn'
+import { Link } from 'react-router-dom'
 
 const HeaderContainer = styled.header`
   display: flex;
@@ -11,12 +12,14 @@ const HeaderContainer = styled.header`
   box-shadow: 0px 1px 0px rgba(1,26,48, 0.05);
   margin-bottom: 40px;
 `
-const Logo = styled.a`
+const Logo = styled(Link)`
   display: flex;
   align-items: center;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
+  color: inherit;
+	text-decoration: none;
 
   & h1 {
     margin-left: 10px;
@@ -27,7 +30,7 @@ const Logo = styled.a`
 export default function Header() {
   return (
     <HeaderContainer>
-      <Logo>
+      <Logo to={'/'}>
         <HackerNewsIcon/>
         <h1>Hacker News</h1>
       </Logo>
