@@ -59,6 +59,7 @@ const NewsLink = styled(Link)`
 `
 
 export default function NewsItem({title, points, user, time, domain, id, newsNumber}: NewsItemProps) {
+
   return (
    <ItemContainer>
       <NewsNumber>{newsNumber}.</NewsNumber>

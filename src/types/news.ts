@@ -24,7 +24,7 @@ export interface INewsPage {
   type: string;
   url?: string;
   domain?: string;
-  comments: INews[]; 
+  comments: INewsPage[]; 
   level: number;
   comments_count: number;
 }
