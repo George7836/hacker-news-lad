@@ -7,6 +7,8 @@ import { getDate } from "../utils/getDate"
 import { Preloader } from "../styles/Preloader"
 import { ReactComponent as Spinner } from '../assets/icons/spinner.svg'
 import Comment from '../components/Comment'
+import { useAppDispatch } from "../types/hooks"
+import { changePage } from "../store/pageSlice"
 
 const Card = styled.div`
   display: flex;
@@ -41,6 +43,7 @@ const Author = styled(Row)`
 export default function NewsPage() {
   const { id } = useParams()
   const [item, setItem] = useState<INewsPage>()
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
     const getData = async () => {
@@ -48,6 +51,10 @@ export default function NewsPage() {
       setItem(response)
     }
     getData()
+  }, [])
+
+  useEffect(() => {
+    dispatch(changePage('single'))
   }, [])
 
   return (

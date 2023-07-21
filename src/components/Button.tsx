@@ -6,7 +6,7 @@ type ReloadBtnProps = {
   onClick?: () => void
 }
 
-const Reload = styled.button`
+const Container = styled.button`
   width: 42px;
   height: 42px;
   position: relative;
@@ -29,10 +29,10 @@ const Reload = styled.button`
   }
 `
 
-export const ReloadBtn = (props: ReloadBtnProps) => {
+export const Button = (props: ReloadBtnProps) => {
   return (
-    <Reload onClick={props.onClick}> 
+    <Container onClick={props.onClick}> 
       {props.children}
-    </Reload>
+    </Container>
    )
 }

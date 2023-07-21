@@ -1,10 +1,12 @@
 import styled from 'styled-components'
 import { ReactComponent as ReloadIcon } from './../assets/icons/reload.svg'
 import { ReactComponent as HackerNewsIcon } from './../assets/icons/hv.svg'
-import { ReloadBtn } from './ReloadBtn'
+import { ReactComponent as BackIcon } from './../assets/icons/back.svg'
+import { Button } from './Button'
 import { Link } from 'react-router-dom'
 import { getAllNews } from '../store/newsSlice'
-import { useAppDispatch } from '../types/hooks'
+import { useAppDispatch, useAppSelector } from '../types/hooks'
+import { userPageSelector } from '../store/pageSlice'
 
 const HeaderContainer = styled.header`
   display: flex;
@@ -29,8 +31,15 @@ const Logo = styled(Link)`
   }
 `
 
+const Buttons = styled.div`
+  & > *:not(:last-child) {
+    margin-right: 15px;
+  }
+`
+
 export default function Header() {
   const dispatch = useAppDispatch()
+  const page = useAppSelector(userPageSelector)
 
   return (
     <HeaderContainer>
@@ -38,9 +47,18 @@ export default function Header() {
         <HackerNewsIcon/>
         <h1>Hacker News</h1>
       </Logo>
-      <ReloadBtn onClick={() => dispatch(getAllNews())}>
-        <ReloadIcon/>
-      </ReloadBtn>
+      <Buttons>
+        {page.page === 'single' &&
+          <Link to='/'>
+            <Button>
+              <BackIcon/>
+            </Button>
+          </Link>
+        }
+        <Button onClick={() => dispatch(getAllNews())}>
+          <ReloadIcon/>
+        </Button>
+      </Buttons>
     </HeaderContainer>
   )
 }

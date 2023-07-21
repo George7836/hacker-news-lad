@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import newsSlice from "./newsSlice";
+import pageSlice from "./pageSlice";
 
 export const store = configureStore({
   reducer: {
-    news: newsSlice
+    news: newsSlice,
+    page: pageSlice
   }
 })
 
