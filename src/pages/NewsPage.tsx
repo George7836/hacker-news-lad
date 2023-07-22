@@ -18,18 +18,21 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(36,41,47, 0.1);
 `
 
 const Title = styled.h3`
-  font-size: 18px;
-  font-weight: 500;
-  margin-bottom: 5px;
+  font-size: 33px;
+  font-weight: 700;
+  margin-bottom: 10px;
 `
 
 const NewsLink = styled.a`
   color: rgb(255,102,0);
   margin-bottom: 25px;
+  text-decoration: none;
 `
 
 const Row = styled.div`
@@ -42,6 +45,12 @@ const Author = styled(Row)`
   span {
     font-weight: 600;
   }
+`
+
+const Comments = styled.div`
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 30px;
 `
 
 export default function NewsPage() {
@@ -69,11 +78,11 @@ export default function NewsPage() {
         <>
           <Card>
             <Title>{item.oneNews?.title}</Title>
-            <NewsLink href={item.oneNews?.url} target="_blank">{item.oneNews?.url}</NewsLink>
+            <NewsLink href={item.oneNews?.url} target="_blank">{item.oneNews?.domain}</NewsLink>
             <Row>{getDate(item.oneNews?.time)}</Row>
             <Author>author: <span>{item.oneNews?.user}</span></Author>
-            <Row>comments: {item.oneNews?.comments_count}</Row>
           </Card>
+          <Comments>comments: {item.oneNews?.comments_count}</Comments>
           {item.oneNews?.comments 
             ? item.oneNews.comments.map((el) => (
               <Comment 

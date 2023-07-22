@@ -14,13 +14,12 @@ const CommentBlock = styled.div`
   flex-direction: column;
   align-items: flex-start;
   margin-bottom: 25px;
-  padding-bottom: 5px;
-  border-bottom: 1px solid rgba(36,41,47, 0.2);
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(36,41,47, 0.1);
 `
 
 const Author = styled.span`
   font-weight: 600;
-  margin-bottom: 5px;
 `
 
 const Time = styled.span`
@@ -34,7 +33,6 @@ const Bottom = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 10px;
 `
 
 const Replies = styled.button`
@@ -43,6 +41,15 @@ const Replies = styled.button`
   border: none;
   background-color: transparent;
   cursor: pointer;
+`
+
+const Text = styled.div`
+  & > p {
+    font-size: 14px;
+    line-height: 19px;
+    margin-block-end: 14px;
+    margin-block-start: 14px;
+  }
 `
 
 const NestedComment = styled.div`
@@ -56,7 +63,7 @@ export default function Comment({user, timeAgo, content, comments}: CommentProps
     <>
       <CommentBlock>
         <Author>{user}</Author>
-        <div dangerouslySetInnerHTML={{ __html: `${content}` }}/>
+        <Text dangerouslySetInnerHTML={{ __html: `${content}` }}/>
         <Bottom>
           <Time>{timeAgo}</Time>
           {comments.length 
