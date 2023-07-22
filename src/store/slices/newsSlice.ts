@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { INews } from "../types/news";
-import { RootState } from "./store";
+import { INews } from "../../types/news";
+import { RootState } from "../store";
 
 export interface NewsState {
   loading: boolean;

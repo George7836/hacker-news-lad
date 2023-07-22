@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import NewsItem from './NewsItem'
 import { useAppDispatch, useAppSelector } from '../types/hooks'
-import { getAllNews, userSelector } from '../store/newsSlice'
+import { getAllNews, userSelector } from '../store/slices/newsSlice'
 import { INews } from '../types/news'
 import { Preloader } from '../styles/Preloader'
 import { ReactComponent as Spinner } from '../assets/icons/spinner.svg'

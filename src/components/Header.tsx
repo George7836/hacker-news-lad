@@ -4,9 +4,10 @@ import { ReactComponent as HackerNewsIcon } from './../assets/icons/hv.svg'
 import { ReactComponent as BackIcon } from './../assets/icons/back.svg'
 import { Button } from './Button'
 import { Link } from 'react-router-dom'
-import { getAllNews } from '../store/newsSlice'
+import { getAllNews } from '../store/slices/newsSlice'
 import { useAppDispatch, useAppSelector } from '../types/hooks'
-import { userPageSelector } from '../store/pageSlice'
+import { userPageSelector } from '../store/slices/pageSlice'
+import { getSingleNews, userSingleNewsSelector } from '../store/slices/singleNewsSlice'
 
 const HeaderContainer = styled.header`
   display: flex;
@@ -40,6 +41,16 @@ const Buttons = styled.div`
 export default function Header() {
   const dispatch = useAppDispatch()
   const page = useAppSelector(userPageSelector)
+  const item = useAppSelector(userSingleNewsSelector)
+
+  function updateItems(currPage: string) {
+    if(currPage === 'single') {
+      dispatch(getSingleNews(item.id))
+    } 
+    if(currPage === 'main') {
+      dispatch(getAllNews())
+    }
+  }
 
   return (
     <HeaderContainer>
@@ -55,7 +66,7 @@ export default function Header() {
             </Button>
           </Link>
         }
-        <Button onClick={() => dispatch(getAllNews())}>
+        <Button onClick={() => updateItems(page.page)}>
           <ReloadIcon/>
         </Button>
       </Buttons>

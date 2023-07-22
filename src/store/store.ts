@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import newsSlice from "./newsSlice";
-import pageSlice from "./pageSlice";
+import newsSlice from "./slices/newsSlice";
+import pageSlice from "./slices/pageSlice";
+import singleNewsSlice from "./slices/singleNewsSlice";
 
 export const store = configureStore({
   reducer: {
     news: newsSlice,
-    page: pageSlice
+    page: pageSlice,
+    single: singleNewsSlice
   }
 })
 

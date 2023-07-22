@@ -1,14 +1,18 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useParams } from "react-router-dom"
-import { getOneNews } from "../api/getOneNews"
-import { INewsPage } from "../types/news"
 import styled from "styled-components"
 import { getDate } from "../utils/getDate"
 import { Preloader } from "../styles/Preloader"
 import { ReactComponent as Spinner } from '../assets/icons/spinner.svg'
 import Comment from '../components/Comment'
-import { useAppDispatch } from "../types/hooks"
-import { changePage } from "../store/pageSlice"
+import { useAppDispatch, useAppSelector } from "../types/hooks"
+import { changePage } from "../store/slices/pageSlice"
+import { getSingleNews, saveId, userSingleNewsSelector } from "../store/slices/singleNewsSlice"
+
+const NewsPageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`
 
 const Card = styled.div`
   display: flex;
@@ -42,35 +46,36 @@ const Author = styled(Row)`
 
 export default function NewsPage() {
   const { id } = useParams()
-  const [item, setItem] = useState<INewsPage>()
   const dispatch = useAppDispatch()
+  const item = useAppSelector(userSingleNewsSelector)
 
   useEffect(() => {
-    const getData = async () => {
-      const response = await getOneNews(id!)
-      setItem(response)
-    }
-    getData()
+    dispatch(getSingleNews(id!))
+    const interval = setInterval(() => {
+      dispatch(getSingleNews(id!))
+    }, 60000)
+    return () => clearInterval(interval)
   }, [])
 
   useEffect(() => {
     dispatch(changePage('single'))
+    dispatch(saveId(id))
   }, [])
 
   return (
-    <>
-      {item !== undefined
+    <NewsPageContainer>
+      {item.loading === false
         ?  
         <>
           <Card>
-            <Title>{item?.title}</Title>
-            <NewsLink href={item?.url} target="_blank">{item?.url}</NewsLink>
-            <Row>{getDate(item?.time)}</Row>
-            <Author>author: <span>{item?.user}</span></Author>
-            <Row>comments: {item?.comments_count}</Row>
+            <Title>{item.oneNews?.title}</Title>
+            <NewsLink href={item.oneNews?.url} target="_blank">{item.oneNews?.url}</NewsLink>
+            <Row>{getDate(item.oneNews?.time)}</Row>
+            <Author>author: <span>{item.oneNews?.user}</span></Author>
+            <Row>comments: {item.oneNews?.comments_count}</Row>
           </Card>
-          {item?.comments 
-            ? item.comments.map((el) => (
+          {item.oneNews?.comments 
+            ? item.oneNews.comments.map((el) => (
               <Comment 
                 key={el.id}
                 user={el.user!} 
@@ -86,6 +91,6 @@ export default function NewsPage() {
         <Preloader>
           <Spinner/>
         </Preloader>}
-    </>
+    </NewsPageContainer>
   )
 }
