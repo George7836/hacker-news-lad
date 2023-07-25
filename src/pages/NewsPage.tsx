@@ -9,50 +9,6 @@ import { useAppDispatch, useAppSelector } from "../types/hooks"
 import { changePage } from "../store/slices/pageSlice"
 import { getSingleNews, saveId, userSingleNewsSelector } from "../store/slices/singleNewsSlice"
 
-const NewsPageContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-`
-
-const Card = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  margin-bottom: 20px;
-  padding-bottom: 15px;
-  border-bottom: 1px solid rgba(36,41,47, 0.1);
-`
-
-const Title = styled.h3`
-  font-size: 33px;
-  font-weight: 700;
-  margin-bottom: 10px;
-`
-
-const NewsLink = styled.a`
-  color: rgb(255,102,0);
-  margin-bottom: 25px;
-  text-decoration: none;
-`
-
-const Row = styled.div`
-  margin-bottom: 5px;
-`
-
-const Author = styled(Row)`
-  margin-bottom: 5px;
-
-  span {
-    font-weight: 600;
-  }
-`
-
-const Comments = styled.div`
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 30px;
-`
-
 export default function NewsPage() {
   const { id } = useParams()
   const dispatch = useAppDispatch()
@@ -103,3 +59,47 @@ export default function NewsPage() {
     </NewsPageContainer>
   )
 }
+
+const NewsPageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
+const Card = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(36,41,47, 0.1);
+`
+
+const Title = styled.h3`
+  font-size: 33px;
+  font-weight: 700;
+  margin-bottom: 10px;
+`
+
+const NewsLink = styled.a`
+  color: rgb(255,102,0);
+  margin-bottom: 25px;
+  text-decoration: none;
+`
+
+const Row = styled.div`
+  margin-bottom: 5px;
+`
+
+const Author = styled(Row)`
+  margin-bottom: 5px;
+
+  span {
+    font-weight: 600;
+  }
+`
+
+const Comments = styled.div`
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 30px;
+`

@@ -9,35 +9,6 @@ import { useAppDispatch, useAppSelector } from '../types/hooks'
 import { userPageSelector } from '../store/slices/pageSlice'
 import { getSingleNews, userSingleNewsSelector } from '../store/slices/singleNewsSlice'
 
-const HeaderContainer = styled.header`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 30px;
-  box-shadow: 0px 1px 0px rgba(1,26,48, 0.05);
-  margin-bottom: 40px;
-`
-const Logo = styled(Link)`
-  display: flex;
-  align-items: center;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  color: inherit;
-	text-decoration: none;
-
-  & h1 {
-    margin-left: 10px;
-    font-size: inherit;
-  }
-`
-
-const Buttons = styled.div`
-  & > *:not(:last-child) {
-    margin-right: 15px;
-  }
-`
-
 export default function Header() {
   const dispatch = useAppDispatch()
   const page = useAppSelector(userPageSelector)
@@ -73,3 +44,32 @@ export default function Header() {
     </HeaderContainer>
   )
 }
+
+const HeaderContainer = styled.header`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 30px;
+  box-shadow: 0px 1px 0px rgba(1,26,48, 0.05);
+  margin-bottom: 40px;
+`
+const Logo = styled(Link)`
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  color: inherit;
+	text-decoration: none;
+
+  & h1 {
+    margin-left: 10px;
+    font-size: inherit;
+  }
+`
+
+const Buttons = styled.div`
+  & > *:not(:last-child) {
+    margin-right: 15px;
+  }
+`

@@ -9,6 +9,45 @@ type CommentProps = {
   comments: INewsPage[]
 }
 
+export default function Comment({user, timeAgo, content, comments}: CommentProps) {
+  const [isCommented, setIsCommented] = useState(false)
+
+  return (
+    <>
+      <CommentBlock>
+        <Author>{user}</Author>
+        <Text dangerouslySetInnerHTML={{ __html: `${content}` }}/>
+        <Bottom>
+          <Time>{timeAgo}</Time>
+          {comments.length 
+            ? 
+              <Replies
+                onClick={() => setIsCommented((prev) => !prev)}
+              >
+                {isCommented ? 'Hide' : 'Show Replies'} 
+              </Replies>
+            : null
+          }
+        </Bottom>
+      </CommentBlock>
+      {isCommented && 
+        comments.map((el) => (
+          <NestedComment
+            key={el.id}
+          >
+            <Comment 
+              user={el.user!} 
+              comments={el.comments} 
+              timeAgo={el.time_ago} 
+              content={el.content}
+            />
+          </NestedComment>
+        ))
+      }
+    </>
+  )
+}
+
 const CommentBlock = styled.div`
   display: flex;
   flex-direction: column;
@@ -55,42 +94,3 @@ const Text = styled.div`
 const NestedComment = styled.div`
   margin-left: 20px;
 `
-
-export default function Comment({user, timeAgo, content, comments}: CommentProps) {
-  const [isCommented, setIsCommented] = useState(false)
-
-  return (
-    <>
-      <CommentBlock>
-        <Author>{user}</Author>
-        <Text dangerouslySetInnerHTML={{ __html: `${content}` }}/>
-        <Bottom>
-          <Time>{timeAgo}</Time>
-          {comments.length 
-            ? 
-              <Replies
-                onClick={() => setIsCommented((prev) => !prev)}
-              >
-                {isCommented ? 'Hide' : 'Show Replies'} 
-              </Replies>
-            : null
-          }
-        </Bottom>
-      </CommentBlock>
-      {isCommented && 
-        comments.map((el) => (
-          <NestedComment
-            key={el.id}
-          >
-            <Comment 
-              user={el.user!} 
-              comments={el.comments} 
-              timeAgo={el.time_ago} 
-              content={el.content}
-            />
-          </NestedComment>
-        ))
-      }
-    </>
-  )
-}

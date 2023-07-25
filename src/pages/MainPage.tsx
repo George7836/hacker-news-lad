@@ -4,10 +4,6 @@ import { useEffect } from "react";
 import { changePage } from "../store/slices/pageSlice";
 import { useAppDispatch } from "../types/hooks";
 
-const Title = styled.h2`
-  margin-bottom: 20px;
-`
-
 export default function MainPage() {
   const dispatch = useAppDispatch()
 
@@ -22,3 +18,7 @@ export default function MainPage() {
     </>
   )
 }
+
+const Title = styled.h2`
+  margin-bottom: 20px;
+`

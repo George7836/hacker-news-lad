@@ -1,7 +1,7 @@
 {
   "homepage": "http://George7836.github.io/hacker-news",
   "name": "hacker-news",
-  "private": false,
+  "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -13,6 +13,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource/inter": "^5.0.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

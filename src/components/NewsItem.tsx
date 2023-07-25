@@ -12,6 +12,24 @@ type NewsItemProps = {
   newsNumber: number
 }
 
+export default function NewsItem({title, points, user, time, domain, id, newsNumber}: NewsItemProps) {
+  return (
+   <ItemContainer>
+      <NewsNumber>{newsNumber}.</NewsNumber>
+      <NewsLink to={`/${id}`}>
+        <Title>{title}</Title>
+        <ItemInfo>
+          {domain 
+            ? <Address>{domain}<Dot>•</Dot></Address>
+            : null
+          }
+          {points} points<Dot>•</Dot>{user}<Dot>•</Dot>{getDate(time)}
+        </ItemInfo>
+      </NewsLink>
+   </ItemContainer>
+  )
+}
+
 const ItemContainer = styled.div`
   display: flex;
   align-items: flex-start;
@@ -57,21 +75,3 @@ const NewsLink = styled(Link)`
   flex-direction: column;
   justify-content: flex-start;
 `
-
-export default function NewsItem({title, points, user, time, domain, id, newsNumber}: NewsItemProps) {
-  return (
-   <ItemContainer>
-      <NewsNumber>{newsNumber}.</NewsNumber>
-      <NewsLink to={`/${id}`}>
-        <Title>{title}</Title>
-        <ItemInfo>
-          {domain 
-            ? <Address>{domain}<Dot>•</Dot></Address>
-            : null
-          }
-          {points} points<Dot>•</Dot>{user}<Dot>•</Dot>{getDate(time)}
-        </ItemInfo>
-      </NewsLink>
-   </ItemContainer>
-  )
-}
