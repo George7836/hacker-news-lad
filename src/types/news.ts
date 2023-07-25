@@ -1,4 +1,4 @@
-export interface INews {
+export interface News {
   id: number;
   title: string;
   points?: number | null;
@@ -11,7 +11,7 @@ export interface INews {
   domain?: string;
 }
 
-export interface INewsPage {
+export interface NewsPage {
   id: number;
   title: string;
   points: number | null;
@@ -24,7 +24,7 @@ export interface INewsPage {
   type: string;
   url?: string;
   domain?: string;
-  comments: INewsPage[]; 
+  comments: NewsPage[]; 
   level: number;
   comments_count: number;
 }

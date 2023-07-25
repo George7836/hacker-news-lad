@@ -1,12 +1,12 @@
 import { styled } from 'styled-components'
-import { INewsPage } from '../types/news'
+import { NewsPage } from '../types/news'
 import { useState } from 'react'
 
 type CommentProps = {
   user: string
   timeAgo: string
   content: string
-  comments: INewsPage[]
+  comments: NewsPage[]
 }
 
 export default function Comment({user, timeAgo, content, comments}: CommentProps) {

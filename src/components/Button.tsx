@@ -1,12 +1,12 @@
-import React from 'react'
+import { ReactNode } from 'react'
 import { styled } from 'styled-components'
 
-type ReloadBtnProps = {
-  children: React.ReactNode
+type ButtonProps = {
+  children: ReactNode
   onClick?: () => void
 }
 
-export const Button = (props: ReloadBtnProps) => {
+export const Button = (props: ButtonProps) => {
   return (
     <Container onClick={props.onClick}> 
       {props.children}

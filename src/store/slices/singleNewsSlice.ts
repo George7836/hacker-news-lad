@@ -1,6 +1,6 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
-import { INewsPage } from "../../types/news";
+import { NewsPage } from "../../types/news";
 
 export const getSingleNews = createAsyncThunk(
   'news/getOnePeaceOfNews',
@@ -21,7 +21,7 @@ export const getSingleNews = createAsyncThunk(
 )
 
 type SingleNewsState = {
-  oneNews: INewsPage | null
+  oneNews: NewsPage | null
   id: string
   loading: boolean
   error: string | undefined
@@ -43,7 +43,7 @@ const singleNewsSlice = createSlice({
     }
   },
   extraReducers: (builder) => {
-    builder.addCase(getSingleNews.fulfilled, (state, action: PayloadAction<INewsPage>) => {
+    builder.addCase(getSingleNews.fulfilled, (state, action: PayloadAction<NewsPage>) => {
       state.loading = false
       state.oneNews = action.payload
     }),

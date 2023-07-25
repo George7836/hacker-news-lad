@@ -1,10 +1,10 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { INews } from "../../types/news";
+import { News } from "../../types/news";
 import { RootState } from "../store";
 
 export interface NewsState {
   loading: boolean;
-  news: Array<INews>;
+  news: Array<News>;
   error: string | undefined;
 }
 const initialState: NewsState = {
@@ -47,7 +47,7 @@ const newsSlice = createSlice({
     builder.addCase(getAllNews.pending, (state) => {
       state.loading = true;
     }),
-    builder.addCase(getAllNews.fulfilled, (state, action: PayloadAction<Array<INews>>) => {
+    builder.addCase(getAllNews.fulfilled, (state, action: PayloadAction<Array<News>>) => {
       state.loading = false;
       state.news = action.payload
     }),
