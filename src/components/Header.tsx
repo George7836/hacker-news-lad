@@ -25,13 +25,13 @@ export default function Header() {
 
   return (
     <HeaderContainer>
-      <HackerNewsLogo to={'/'}>
+      <HackerNewsLogo to={'/hacker-news/'}>
         <HackerNewsIcon/>
         <h1>Hacker News</h1>
       </HackerNewsLogo>
       <Buttons>
         {page.page === 'single' &&
-          <Link to='/'>
+          <Link to='/hacker-news/'>
             <Button>
               <BackIcon/>
             </Button>
