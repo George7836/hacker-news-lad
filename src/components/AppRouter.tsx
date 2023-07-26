@@ -6,8 +6,8 @@ import NotFound from "./NotFound";
 export default function AppRouter() {
   return (
       <Routes>
-        <Route path='/hacker-news/' element={<MainPage/>}/>
-        <Route path='/hacker-news/:id' element={<NewsPage/>}/>
+        <Route path='/' element={<MainPage/>}/>
+        <Route path='/:id' element={<NewsPage/>}/>
         <Route path='*' element={<NotFound/>}/>
       </Routes>
   )
