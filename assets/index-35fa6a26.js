@@ -288,7 +288,7 @@ Error generating stack: `+i.message+`
 `,sS=A(tl)`
   color: rgb(255,102,0);
   text-decoration: none;
-`;function cS(){return _.jsxs($y,{children:[_.jsx(Zo,{path:"/",element:_.jsx(Qw,{})}),_.jsx(Zo,{path:"/:id",element:_.jsx(eS,{})}),_.jsx(Zo,{path:"*",element:_.jsx(uS,{})})]})}function fS(){return _.jsxs(Iy,{children:[_.jsx(Aw,{}),_.jsx(Tw,{}),_.jsx(dS,{children:_.jsx(cS,{})})]})}const dS=A.div`
+`;function cS(){return _.jsxs($y,{children:[_.jsx(Zo,{path:"/",element:_.jsx(Qw,{})}),_.jsx(Zo,{path:"/:id",element:_.jsx(eS,{})}),_.jsx(Zo,{path:"*",element:_.jsx(uS,{})})]})}function fS(){return _.jsxs(Iy,{basename:"/hacker-news/",children:[_.jsx(Aw,{}),_.jsx(Tw,{}),_.jsx(dS,{children:_.jsx(cS,{})})]})}const dS=A.div`
   max-width: 660px;
 	padding: 0 30px;
   margin: 0 auto;
