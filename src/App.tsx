@@ -1,22 +1,18 @@
-import { HashRouter, Route, Routes } from 'react-router-dom'
-import MainPage from './pages/MainPage'
-import NewsPage from './pages/NewsPage'
+import { BrowserRouter } from 'react-router-dom'
 import Header from './components/Header'
 import GlobalStyles from './styles/GlobalStyles'
 import styled from 'styled-components'
+import AppRouter from './components/AppRouter'
 
 function App() {
   return (
-    <HashRouter basename='/'>
+    <BrowserRouter>
       <GlobalStyles/>
       <Header/>
       <Container>
-        <Routes>
-          <Route path='/' element={<MainPage/>}/>
-          <Route path='/:id' element={<NewsPage/>}/>
-        </Routes>
+        <AppRouter/>
       </Container>
-    </HashRouter>
+    </BrowserRouter>
   )
 }
 

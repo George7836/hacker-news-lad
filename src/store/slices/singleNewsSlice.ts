@@ -24,7 +24,7 @@ type SingleNewsState = {
   oneNews: NewsPage | null
   id: string
   loading: boolean
-  error: string | undefined
+  error?: string
 }
 
 const initialState: SingleNewsState = {

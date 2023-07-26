@@ -25,10 +25,10 @@ export default function Header() {
 
   return (
     <HeaderContainer>
-      <Logo to={'/'}>
+      <HackerNewsLogo to={'/'}>
         <HackerNewsIcon/>
         <h1>Hacker News</h1>
-      </Logo>
+      </HackerNewsLogo>
       <Buttons>
         {page.page === 'single' &&
           <Link to='/'>
@@ -53,7 +53,7 @@ const HeaderContainer = styled.header`
   box-shadow: 0px 1px 0px rgba(1,26,48, 0.05);
   margin-bottom: 40px;
 `
-const Logo = styled(Link)`
+const HackerNewsLogo = styled(Link)`
   display: flex;
   align-items: center;
   font-size: 16px;
@@ -69,6 +69,9 @@ const Logo = styled(Link)`
 `
 
 const Buttons = styled.div`
+  display: flex;
+  align-items: center;
+
   & > *:not(:last-child) {
     margin-right: 15px;
   }

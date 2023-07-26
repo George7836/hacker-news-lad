@@ -2,7 +2,7 @@ import { styled } from 'styled-components'
 import { NewsPage } from '../types/news'
 import { useState } from 'react'
 
-type CommentProps = {
+interface CommentProps {
   user: string
   timeAgo: string
   content: string
@@ -21,9 +21,7 @@ export default function Comment({user, timeAgo, content, comments}: CommentProps
           <Time>{timeAgo}</Time>
           {comments.length 
             ? 
-              <Replies
-                onClick={() => setIsCommented((prev) => !prev)}
-              >
+              <Replies onClick={() => setIsCommented((prev) => !prev)}>
                 {isCommented ? 'Hide' : 'Show Replies'} 
               </Replies>
             : null
@@ -32,9 +30,7 @@ export default function Comment({user, timeAgo, content, comments}: CommentProps
       </CommentBlock>
       {isCommented && 
         comments.map((el) => (
-          <NestedComment
-            key={el.id}
-          >
+          <NestedComment key={el.id}>
             <Comment 
               user={el.user!} 
               comments={el.comments} 

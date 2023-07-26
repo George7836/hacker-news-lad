@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 import { styled } from 'styled-components'
 
-type ButtonProps = {
+interface ButtonProps {
   children: ReactNode
   onClick?: () => void
 }
@@ -17,7 +17,6 @@ export const Button = (props: ButtonProps) => {
 const Container = styled.button`
   width: 42px;
   height: 42px;
-  position: relative;
   padding: 0;
   border: none;
   background-color: transparent;
@@ -30,9 +29,7 @@ const Container = styled.button`
   }
 
   svg {
-    position: absolute; 
-		top: 50%; 
-		left: 50%; 
-		transform: translate(-50%,-50%); 
+    text-align: center;
+    vertical-align: middle;
   }
 `

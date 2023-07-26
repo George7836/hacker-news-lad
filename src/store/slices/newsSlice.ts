@@ -5,7 +5,7 @@ import { RootState } from "../store";
 export interface NewsState {
   loading: boolean;
   news: Array<News>;
-  error: string | undefined;
+  error?: string;
 }
 const initialState: NewsState = {
   loading: false,

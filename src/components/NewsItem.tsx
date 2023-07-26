@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { getDate } from '../utils/getDate'
 
-type NewsItemProps = {
+interface NewsItemProps {
   title: string
   points?: number | null
   user?: string | null
