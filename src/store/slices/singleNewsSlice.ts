@@ -4,7 +4,7 @@ import { NewsPage } from "../../types/news";
 
 export const getSingleNews = createAsyncThunk(
   'news/getOnePeaceOfNews',
-  async function(id: string, {rejectWithValue}) {
+  async function(id: string | undefined, {rejectWithValue}) {
     try {
       const response = await fetch(`https://api.hnpwa.com/v0/item/${id}.json`, {cache: 'no-store'})
       .then((data) => {
@@ -22,16 +22,18 @@ export const getSingleNews = createAsyncThunk(
 
 type SingleNewsState = {
   oneNews: NewsPage | null
-  id: string
+  id: string 
   loading: boolean
   error?: string
+  updated: boolean
 }
 
 const initialState: SingleNewsState = {
   oneNews: null,
   id: '',
   loading: true,
-  error: undefined
+  error: undefined,
+  updated: false
 }
 
 const singleNewsSlice = createSlice({
@@ -40,6 +42,9 @@ const singleNewsSlice = createSlice({
   reducers: {
     saveId(state, action) {
       state.id = action.payload
+    },
+    setUpdateOneNews(state) {
+      state.updated = !state.updated
     }
   },
   extraReducers: (builder) => {
@@ -59,5 +64,5 @@ const singleNewsSlice = createSlice({
 })
 
 export const userSingleNewsSelector = (state: RootState) => state.single
-export const { saveId } = singleNewsSlice.actions
+export const { saveId, setUpdateOneNews } = singleNewsSlice.actions
 export default singleNewsSlice.reducer

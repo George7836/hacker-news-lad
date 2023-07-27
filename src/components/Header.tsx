@@ -4,10 +4,10 @@ import { ReactComponent as HackerNewsIcon } from './../assets/icons/hv.svg'
 import { ReactComponent as BackIcon } from './../assets/icons/back.svg'
 import { Button } from './Button'
 import { Link } from 'react-router-dom'
-import { getAllNews } from '../store/slices/newsSlice'
+import { getAllNews, setUpdatedNews } from '../store/slices/newsSlice'
 import { useAppDispatch, useAppSelector } from '../types/hooks'
 import { userPageSelector } from '../store/slices/pageSlice'
-import { getSingleNews, userSingleNewsSelector } from '../store/slices/singleNewsSlice'
+import { getSingleNews, setUpdateOneNews, userSingleNewsSelector } from '../store/slices/singleNewsSlice'
 
 export default function Header() {
   const dispatch = useAppDispatch()
@@ -17,9 +17,11 @@ export default function Header() {
   function updateItems(currPage: string) {
     if(currPage === 'single') {
       dispatch(getSingleNews(item.id))
+      dispatch(setUpdateOneNews())
     } 
     if(currPage === 'main') {
       dispatch(getAllNews())
+      dispatch(setUpdatedNews())
     }
   }
 

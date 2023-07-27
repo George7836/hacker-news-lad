@@ -16,12 +16,12 @@ export default function NewsPage() {
   const item = useAppSelector(userSingleNewsSelector)
 
   useEffect(() => {
-    dispatch(getSingleNews(id!))
+    dispatch(getSingleNews(id))
     const interval = setInterval(() => {
-      dispatch(getSingleNews(id!))
+      dispatch(getSingleNews(id))
     }, 60000)
     return () => clearInterval(interval)
-  }, [])
+  }, [id, item.updated])
 
   useEffect(() => {
     dispatch(changePage('single'))

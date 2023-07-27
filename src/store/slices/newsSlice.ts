@@ -6,11 +6,13 @@ export interface NewsState {
   loading: boolean;
   news: Array<News>;
   error?: string;
+  updated: boolean;
 }
 const initialState: NewsState = {
   loading: false,
   news: [],
   error: undefined,
+  updated: false
 }
 
 export const getAllNews = createAsyncThunk(
@@ -42,7 +44,11 @@ export const getAllNews = createAsyncThunk(
 const newsSlice = createSlice({
   name: 'news',
   initialState,
-  reducers: {},
+  reducers: {
+    setUpdatedNews(state) {
+      state.updated = !state.updated
+    }
+  },
   extraReducers: (builder) => {
     builder.addCase(getAllNews.pending, (state) => {
       state.loading = true;
@@ -60,4 +66,5 @@ const newsSlice = createSlice({
 })
 
 export const userSelector = (state: RootState) => state.news
+export const { setUpdatedNews } = newsSlice.actions
 export default newsSlice.reducer
