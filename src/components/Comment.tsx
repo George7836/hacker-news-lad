@@ -3,7 +3,7 @@ import { NewsPage } from '../types/news'
 import { useState } from 'react'
 
 interface CommentProps {
-  user: string
+  user: string | null
   timeAgo: string
   content: string
   comments: NewsPage[]
@@ -32,7 +32,7 @@ export default function Comment({user, timeAgo, content, comments}: CommentProps
         comments.map((el) => (
           <NestedComment key={el.id}>
             <Comment 
-              user={el.user!} 
+              user={el.user} 
               comments={el.comments} 
               timeAgo={el.time_ago} 
               content={el.content}

@@ -8,6 +8,7 @@ import Comment from '../components/Comment'
 import { useAppDispatch, useAppSelector } from "../types/hooks"
 import { changePage } from "../store/slices/pageSlice"
 import { getSingleNews, saveId, userSingleNewsSelector } from "../store/slices/singleNewsSlice"
+import NotFound from "../components/NotFound"
 
 export default function NewsPage() {
   const { id } = useParams()
@@ -29,29 +30,35 @@ export default function NewsPage() {
 
   return (
     <NewsPageContainer>
-      {item.loading === false
-        ?  
-        <>
-          <Card>
-            <Title>{item.oneNews?.title}</Title>
-            <NewsLink href={item.oneNews?.url} target="_blank">{item.oneNews?.domain}</NewsLink>
-            <Row>{getDate(item.oneNews?.time)}</Row>
-            <Author>author: <span>{item.oneNews?.user}</span></Author>
-          </Card>
-          <Comments>comments: {item.oneNews?.comments_count}</Comments>
-          {item.oneNews?.comments 
-            ? item.oneNews.comments.map((el) => (
-              <Comment 
-                key={el.id}
-                user={el.user!} 
-                timeAgo={el.time_ago} 
-                content={el.content} 
-                comments={el.comments}
-              />
-            ))
-            : null
-          }
-        </>
+      {item.loading === false 
+        ?
+          <>
+            {item.oneNews !== null 
+              ?
+              <>
+                <Card>
+                  <Title>{item.oneNews?.title}</Title>
+                  <NewsLink href={item.oneNews?.url} target="_blank">{item.oneNews?.domain}</NewsLink>
+                  <Row>{getDate(item.oneNews?.time)}</Row>
+                  <Author>author: <span>{item.oneNews?.user}</span></Author>
+                </Card>
+                <Comments>comments: {item.oneNews?.comments_count}</Comments>
+                {item.oneNews?.comments 
+                  ? item.oneNews.comments.map((el) => (
+                    <Comment 
+                      key={el.id}
+                      user={el.user} 
+                      timeAgo={el.time_ago} 
+                      content={el.content} 
+                      comments={el.comments}
+                    />
+                  ))
+                  : null
+                }
+              </>
+              : <NotFound/>
+            }
+          </>
         : 
         <Preloader>
           <Spinner/>

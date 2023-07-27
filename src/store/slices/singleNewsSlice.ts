@@ -30,7 +30,7 @@ type SingleNewsState = {
 const initialState: SingleNewsState = {
   oneNews: null,
   id: '',
-  loading: false,
+  loading: true,
   error: undefined
 }
 
