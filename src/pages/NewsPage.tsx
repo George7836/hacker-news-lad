@@ -51,6 +51,8 @@ export default function NewsPage() {
                       timeAgo={el.time_ago} 
                       content={el.content} 
                       comments={el.comments}
+                      dead={el.dead}
+                      deleted={el.deleted}
                     />
                   ))
                   : null

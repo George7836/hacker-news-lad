@@ -7,38 +7,48 @@ interface CommentProps {
   timeAgo: string
   content: string
   comments: NewsPage[]
+  dead?: boolean
+  deleted?: boolean
 }
 
-export default function Comment({user, timeAgo, content, comments}: CommentProps) {
+export default function Comment({user, timeAgo, content, comments, dead, deleted}: CommentProps) {
   const [isCommented, setIsCommented] = useState(false)
 
   return (
     <>
-      <CommentBlock>
-        <Author>{user}</Author>
-        <Text dangerouslySetInnerHTML={{ __html: `${content}` }}/>
-        <Bottom>
-          <Time>{timeAgo}</Time>
-          {comments.length 
-            ? 
-              <Replies onClick={() => setIsCommented((prev) => !prev)}>
-                {isCommented ? 'Hide' : 'Show Replies'} 
-              </Replies>
-            : null
-          }
-        </Bottom>
-      </CommentBlock>
-      {isCommented && 
-        comments.map((el) => (
-          <NestedComment key={el.id}>
-            <Comment 
-              user={el.user} 
-              comments={el.comments} 
-              timeAgo={el.time_ago} 
-              content={el.content}
-            />
-          </NestedComment>
-        ))
+      {dead || deleted 
+          ? null
+          : 
+          <>
+            <CommentBlock>
+              <Author>{user}</Author>
+              <Text dangerouslySetInnerHTML={{ __html: `${content}` }}/>
+              <Bottom>
+                <Time>{timeAgo}</Time>
+                {comments.length 
+                  ? 
+                    <Replies onClick={() => setIsCommented((prev) => !prev)}>
+                      {isCommented ? 'Hide' : 'Show Replies'} 
+                    </Replies>
+                  : null
+                }
+              </Bottom>
+            </CommentBlock>
+            {isCommented && 
+              comments.map((el) => (
+                <NestedComment key={el.id}>
+                  <Comment 
+                    user={el.user} 
+                    comments={el.comments} 
+                    timeAgo={el.time_ago} 
+                    content={el.content}
+                    dead={el.dead}
+                    deleted={el.deleted}
+                  />
+                </NestedComment>
+              ))
+            }
+          </>
       }
     </>
   )
