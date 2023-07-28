@@ -54,6 +54,7 @@ const HeaderContainer = styled.header`
   padding: 12px 30px;
   box-shadow: 0px 1px 0px rgba(1,26,48, 0.05);
   margin-bottom: 40px;
+  background-color: #fff;
 `
 const HackerNewsLogo = styled(Link)`
   display: flex;

@@ -28,48 +28,42 @@ export default function NewsPage() {
     dispatch(saveId(id))
   }, [])
 
+  if(item.loading) return <Preloader><Spinner/></Preloader>
+
   return (
-    <NewsPageContainer>
-      {item.loading === false 
-        ?
-          <>
-            {item.oneNews !== null 
-              ?
-              <>
-                <Card>
-                  <Title>{item.oneNews?.title}</Title>
-                  <NewsLink href={item.oneNews?.url} target="_blank">{item.oneNews?.domain}</NewsLink>
-                  <Row>{getDate(item.oneNews?.time)}</Row>
-                  <Author>author: <span>{item.oneNews?.user}</span></Author>
-                </Card>
-                <Comments>comments: {item.oneNews?.comments_count}</Comments>
-                {item.oneNews?.comments 
-                  ? item.oneNews.comments.map((el) => (
-                    <Comment 
-                      key={el.id}
-                      user={el.user} 
-                      timeAgo={el.time_ago} 
-                      content={el.content} 
-                      comments={el.comments}
-                      dead={el.dead}
-                      deleted={el.deleted}
-                    />
-                  ))
-                  : null
-                }
-              </>
-              : <NotFound/>
+      <>
+        {item.oneNews !== null 
+          ?
+          <NewsPageInfo>
+            <Card>
+              <Title>{item.oneNews?.title}</Title>
+              <NewsLink href={item.oneNews?.url} target="_blank">{item.oneNews?.domain}</NewsLink>
+              <Row>{getDate(item.oneNews?.time)}</Row>
+              <Author>author: <span>{item.oneNews?.user}</span></Author>
+              <Comments>comments: {item.oneNews?.comments_count}</Comments>
+            </Card>
+            {item.oneNews?.comments 
+              ? item.oneNews.comments.map((el) => (
+                <Comment 
+                  key={el.id}
+                  user={el.user} 
+                  timeAgo={el.time_ago} 
+                  content={el.content} 
+                  comments={el.comments}
+                  dead={el.dead}
+                  deleted={el.deleted}
+                />
+              ))
+              : null
             }
-          </>
-        : 
-        <Preloader>
-          <Spinner/>
-        </Preloader>}
-    </NewsPageContainer>
+          </NewsPageInfo>
+          : <NotFound/>
+        }
+      </>
   )
 }
 
-const NewsPageContainer = styled.div`
+const NewsPageInfo = styled.div`
   display: flex;
   flex-direction: column;
 `
@@ -78,9 +72,14 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   padding-bottom: 15px;
   border-bottom: 1px solid rgba(36,41,47, 0.1);
+
+  background-color: #fff;
+  border-radius: 6px;
+  border: 1px solid rgba(36,41,47, 0.1);
+  padding: 10px 15px;
 `
 
 const Title = styled.h3`
@@ -108,7 +107,4 @@ const Author = styled(Row)`
 `
 
 const Comments = styled.div`
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 30px;
 `

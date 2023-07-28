@@ -19,7 +19,7 @@ function App() {
 export default App
 
 const Container = styled.div`
-  max-width: 660px;
+  max-width: 1060px;
 	padding: 0 30px;
   margin: 0 auto;
 `

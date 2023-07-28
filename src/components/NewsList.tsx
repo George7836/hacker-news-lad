@@ -5,6 +5,7 @@ import { getAllNews, userSelector } from '../store/slices/newsSlice'
 import { News } from '../types/news'
 import { Preloader } from '../styles/Preloader'
 import { ReactComponent as Spinner } from '../assets/icons/spinner.svg'
+import { styled } from 'styled-components'
 
 export default function NewsList() {
   const news = useAppSelector(userSelector)
@@ -18,10 +19,11 @@ export default function NewsList() {
     return () => clearInterval(interval)
   }, [news.updated])
 
+  if(news.loading) return  <Preloader><Spinner/></Preloader>
+
   return (
-   <>
-    {news.loading === false
-      ? news.news.map((el: News) => (
+    <NewsListContainer>
+      {news.news.map((el: News) => (
         <NewsItem
           key={el.id}
           id={el.id}
@@ -29,14 +31,18 @@ export default function NewsList() {
           points={el.points}
           user={el.user}
           time={el.time}
-          domain={el.domain}
-          newsNumber={news.news.indexOf(el) + 1}
         />
-      ))
-      : 
-      <Preloader>
-        <Spinner/>
-      </Preloader>}
-   </>
+      ))}
+    </NewsListContainer>
   )
 }
+
+const NewsListContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 15px;
+
+  @media (max-width: 800px) {
+    grid-template-columns: 1fr;
+  }
+`

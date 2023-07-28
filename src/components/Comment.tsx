@@ -14,43 +14,41 @@ interface CommentProps {
 export default function Comment({user, timeAgo, content, comments, dead, deleted}: CommentProps) {
   const [isCommented, setIsCommented] = useState(false)
 
+  if(dead || deleted) return null
+
   return (
-    <>
-      {dead || deleted 
-          ? null
-          : 
-          <>
-            <CommentBlock>
-              <Author>{user}</Author>
-              <Text dangerouslySetInnerHTML={{ __html: `${content}` }}/>
-              <Bottom>
-                <Time>{timeAgo}</Time>
-                {comments.length 
-                  ? 
-                    <Replies onClick={() => setIsCommented((prev) => !prev)}>
-                      {isCommented ? 'Hide' : 'Show Replies'} 
-                    </Replies>
-                  : null
-                }
-              </Bottom>
-            </CommentBlock>
-            {isCommented && 
-              comments.map((el) => (
-                <NestedComment key={el.id}>
-                  <Comment 
-                    user={el.user} 
-                    comments={el.comments} 
-                    timeAgo={el.time_ago} 
-                    content={el.content}
-                    dead={el.dead}
-                    deleted={el.deleted}
-                  />
-                </NestedComment>
-              ))
+      <>
+        <CommentBlock>
+          <Author>{user}</Author>
+          <Text dangerouslySetInnerHTML={{ __html: `${content}` }}/>
+          <Bottom>
+            <Time>{timeAgo}</Time>
+            {comments.length 
+              ? 
+                <Replies onClick={() => setIsCommented((prev) => !prev)}>
+                  {isCommented ? 'Hide' : 'Show Replies'} 
+                </Replies>
+              : null
             }
-          </>
-      }
-    </>
+          </Bottom>
+        </CommentBlock>
+        {isCommented 
+          ?  
+          comments.map((el) => (
+            <NestedComment key={el.id}>
+              <Comment 
+                user={el.user} 
+                comments={el.comments} 
+                timeAgo={el.time_ago} 
+                content={el.content}
+                dead={el.dead}
+                deleted={el.deleted}
+              />
+            </NestedComment>
+          ))
+          : null
+        }
+      </>
   )
 }
 
@@ -58,9 +56,12 @@ const CommentBlock = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-bottom: 25px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid rgba(36,41,47, 0.1);
+  margin-bottom: 15px;
+
+  background-color: #fff;
+  border-radius: 6px;
+  border: 1px solid rgba(36,41,47, 0.1);
+  padding: 10px 15px;
 `
 
 const Author = styled.span`
