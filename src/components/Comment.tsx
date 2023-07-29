@@ -58,9 +58,9 @@ const CommentBlock = styled.div`
   align-items: flex-start;
   margin-bottom: 15px;
 
-  background-color: #fff;
+  background-color: ${props => props.theme.colors.elements};
   border-radius: 6px;
-  border: 1px solid rgba(36,41,47, 0.1);
+  border: 1px solid ${props => props.theme.colors.opacity};
   padding: 10px 15px;
 `
 
@@ -69,7 +69,7 @@ const Author = styled.span`
 `
 
 const Time = styled.span`
-  color: rgb(36,41,47);
+  color: ${props => props.theme.colors.font};
   opacity: 0.5;
   font-size: 14px;
 `
@@ -82,7 +82,7 @@ const Bottom = styled.div`
 `
 
 const Replies = styled.button`
-  color: rgb(255,102,0);
+  color: ${props => props.theme.colors.secondary};
   padding: 0;
   border: none;
   background-color: transparent;

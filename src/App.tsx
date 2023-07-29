@@ -3,15 +3,18 @@ import Header from './components/Header'
 import GlobalStyles from './styles/GlobalStyles'
 import styled from 'styled-components'
 import AppRouter from './components/AppRouter'
+import Theme from './styles/Theme'
 
 function App() {
   return (
     <BrowserRouter basename='/hacker-news/'>
-      <GlobalStyles/>
-      <Header/>
-      <Container>
-        <AppRouter/>
-      </Container>
+      <Theme>
+        <GlobalStyles/>
+        <Header/>
+        <Container>
+          <AppRouter/>
+        </Container>
+      </Theme>
     </BrowserRouter>
   )
 }

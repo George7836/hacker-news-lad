@@ -71,23 +71,21 @@ const Card = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   margin-bottom: 15px;
-  padding-bottom: 15px;
-  border-bottom: 1px solid rgba(36,41,47, 0.1);
 
-  background-color: #fff;
+  background-color: ${props => props.theme.colors.elements};
   border-radius: 6px;
-  border: 1px solid rgba(36,41,47, 0.1);
+  border: 1px solid ${props => props.theme.colors.opacity};
   padding: 10px 15px;
 `
 
-const Title = styled.h3`
+const Title = styled.h2`
   font-size: 33px;
   font-weight: 700;
   margin-bottom: 10px;
 `
 
 const NewsLink = styled.a`
-  color: rgb(255,102,0);
+  color: ${props => props.theme.colors.secondary};
   margin-bottom: 25px;
   text-decoration: none;
 `

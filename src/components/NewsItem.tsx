@@ -31,16 +31,16 @@ const ItemInfo = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  color: rgb(36,41,47);
+  color: ${props => props.theme.colors.font};
   font-size: 12px;
 `
 
 const User = styled.span`
-  color: rgb(255,102,0);
+  color: ${props => props.theme.colors.secondary};
 `
 
 const Dot = styled.span`
-  color: rgb(36,41,47);
+  color: ${props => props.theme.colors.font};
   opacity: 0.2;
   margin: 0 5px
 `
@@ -48,7 +48,7 @@ const Dot = styled.span`
 const NewsLink = styled(Link)`
 	color: inherit;
 	text-decoration: none;
-  background-color: #fff;
+  background-color: ${props => props.theme.colors.elements};
 
   display: flex;
   flex-direction: column;
@@ -56,7 +56,7 @@ const NewsLink = styled(Link)`
 
   margin-bottom: 15px;
   border-radius: 6px;
-  border: 1px solid rgba(36,41,47, 0.1);
+  border: 1px solid ${props => props.theme.colors.opacity};
   padding: 12px;
   transition: all 0.3s ease;
 
