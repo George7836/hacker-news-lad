@@ -3,27 +3,27 @@ import { ReactComponent as ReloadIcon } from './../assets/icons/reload.svg'
 import { ReactComponent as HackerNewsIcon } from './../assets/icons/hv.svg'
 import { ReactComponent as BackIcon } from './../assets/icons/back.svg'
 import { Button } from './Button'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { getAllNews, setUpdatedNews } from '../store/slices/newsSlice'
 import { useAppDispatch, useAppSelector } from '../types/hooks'
-import { userPageSelector } from '../store/slices/pageSlice'
 import { getSingleNews, setUpdateOneNews, userSingleNewsSelector } from '../store/slices/singleNewsSlice'
+import { useCallback } from 'react'
 
 export default function Header() {
   const dispatch = useAppDispatch()
-  const page = useAppSelector(userPageSelector)
   const item = useAppSelector(userSingleNewsSelector)
+  const location = useLocation()
 
-  function updateItems(currPage: string) {
-    if(currPage === 'single') {
+  const updateItems = useCallback((page: string) => {
+    if(page === `/${item.id}`) {
       dispatch(getSingleNews(item.id))
       dispatch(setUpdateOneNews())
     } 
-    if(currPage === 'main') {
+    if(page === '/') {
       dispatch(getAllNews())
       dispatch(setUpdatedNews())
     }
-  }
+  }, [location.pathname, item.id])
 
   return (
     <HeaderContainer>
@@ -32,14 +32,14 @@ export default function Header() {
         <h1>Hacker News</h1>
       </HackerNewsLogo>
       <Buttons>
-        {page.page === 'single' &&
+        {location.pathname !== '/' &&
           <Link to='/'>
             <Button>
               <BackIcon/>
             </Button>
           </Link>
         }
-        <Button onClick={() => updateItems(page.page)}>
+        <Button onClick={() => updateItems(location.pathname)}>
           <ReloadIcon/>
         </Button>
       </Buttons>

@@ -6,7 +6,6 @@ import { Preloader } from "../styles/Preloader"
 import { ReactComponent as Spinner } from '../assets/icons/spinner.svg'
 import Comment from '../components/Comment'
 import { useAppDispatch, useAppSelector } from "../types/hooks"
-import { changePage } from "../store/slices/pageSlice"
 import { getSingleNews, saveId, userSingleNewsSelector } from "../store/slices/singleNewsSlice"
 import NotFound from "../components/NotFound"
 
@@ -24,7 +23,6 @@ export default function NewsPage() {
   }, [id, item.updated])
 
   useEffect(() => {
-    dispatch(changePage('single'))
     dispatch(saveId(id))
   }, [])
 
