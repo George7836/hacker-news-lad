@@ -23,16 +23,20 @@ export default function NewsList() {
 
   return (
     <NewsListContainer>
-      {news.news.map((el: News) => (
-        <NewsItem
-          key={el.id}
-          id={el.id}
-          title={el.title}
-          points={el.points}
-          user={el.user}
-          time={el.time}
-        />
-      ))}
+      {news.news.length > 0 
+        ?
+        news.news.map((el: News) => (
+          <NewsItem
+            key={el.id}
+            id={el.id}
+            title={el.title}
+            points={el.points}
+            user={el.user}
+            time={el.time}
+          />
+        ))
+        : null
+      }
     </NewsListContainer>
   )
 }

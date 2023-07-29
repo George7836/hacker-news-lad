@@ -47,7 +47,7 @@ export default function Header() {
   )
 }
 
-const HeaderContainer = styled.header`
+const HeaderContainer = styled('header')`
   display: flex;
   justify-content: space-between;
   align-items: center;
