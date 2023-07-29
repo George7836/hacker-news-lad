@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { News } from "../../types/news";
 import { RootState } from "../store";
+import { getNews } from "../../api/getNews";
 
 export interface NewsState {
   loading: boolean;
@@ -19,22 +20,7 @@ export const getAllNews = createAsyncThunk(
   'news/getAllNews',
   async function(_, {rejectWithValue}) {
     try {
-      const arr = new Array(4).fill(null);
-
-      const res = await Promise.all(
-        arr.map((_, page) => {
-          return fetch(`https://api.hnpwa.com/v0/newest/${page + 1}.json`, {cache: 'no-store'})
-            .then((res) => {
-              if(!res.ok) {
-                throw new Error('Error!')
-              }
-              return res.json()
-            })
-        })
-      )
-        .then((data) => data.flat().slice(0,100))
-
-      return res
+      return getNews()
     } catch(error: any) {
       return rejectWithValue(error.message)
     }

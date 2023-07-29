@@ -1,19 +1,13 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 import { NewsPage } from "../../types/news";
+import { getOnePieceOfNews } from "../../api/getSingleNews";
 
 export const getSingleNews = createAsyncThunk(
   'news/getOnePeaceOfNews',
   async function(id: string | undefined, {rejectWithValue}) {
     try {
-      const response = await fetch(`https://api.hnpwa.com/v0/item/${id}.json`, {cache: 'no-store'})
-      .then((data) => {
-        if(!data.ok) {
-          throw new Error('Error!')
-        }
-        return data.json()
-      })
-      return response
+      return getOnePieceOfNews(id)
     } catch(error: any) {
       return rejectWithValue(error.message)
     }
