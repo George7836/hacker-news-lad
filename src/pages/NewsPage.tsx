@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from "react"
+import { useEffect } from "react"
 import { useParams } from "react-router-dom"
 import styled from "styled-components"
 import { getDate } from "../utils/getDate"
@@ -72,9 +72,9 @@ const Card = styled.div`
   justify-content: flex-start;
   margin-bottom: 15px;
 
-  background-color: ${props => props.theme.colors.elements};
+  background-color: ${({theme}) => theme.colors.elements};
   border-radius: 6px;
-  border: 1px solid ${props => props.theme.colors.opacity};
+  border: 1px solid ${({theme}) => theme.colors.opacity};
   padding: 10px 15px;
 `
 
@@ -85,7 +85,7 @@ const Title = styled.h2`
 `
 
 const NewsLink = styled.a`
-  color: ${props => props.theme.colors.secondary};
+  color: ${({theme}) => theme.colors.secondary};
   margin-bottom: 25px;
   text-decoration: none;
 `

@@ -15,6 +15,6 @@ const Title = styled.h2`
 `
 
 const NotFoundLink = styled(Link)`
-  color: ${props => props.theme.colors.secondary};
+  color: ${({theme}) => theme.colors.secondary};
   text-decoration: none;
 `

@@ -1,18 +1,18 @@
-import Theme from '../styles/Theme'
+import { theme } from '../styles/theme'
 import Header from './Header'
 import GlobalStyles from '../styles/GlobalStyles'
 import { Outlet } from 'react-router-dom'
-import { styled } from 'styled-components'
+import { ThemeProvider, styled } from 'styled-components'
 
 export default function Layout() {
   return (
-    <Theme>
+    <ThemeProvider theme={theme}>
       <GlobalStyles/>
       <Header/>
       <Container>
         <Outlet/>
       </Container>
-    </Theme>
+    </ThemeProvider>
   )
 }
 

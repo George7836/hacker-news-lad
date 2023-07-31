@@ -52,9 +52,9 @@ const HeaderContainer = styled('header')`
   justify-content: space-between;
   align-items: center;
   padding: 12px 30px;
-  box-shadow: 0px 1px 0px ${props => props.theme.colors.shadow};
+  box-shadow: 0px 1px 0px ${({theme}) => theme.colors.shadow};
   margin-bottom: 40px;
-  background-color: ${props => props.theme.colors.elements};
+  background-color: ${({theme}) => theme.colors.elements};
 `
 const HackerNewsLogo = styled(Link)`
   display: flex;

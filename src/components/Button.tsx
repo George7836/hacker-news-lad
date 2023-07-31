@@ -1,15 +1,15 @@
+
 import { ReactNode } from 'react'
 import { styled } from 'styled-components'
 
-interface ButtonProps {
+interface ButtonProps extends React.HTMLProps<HTMLButtonElement> {
   children: ReactNode
-  onClick?: () => void
 }
 
-export const Button = (props: ButtonProps) => {
+export const Button: React.FC<ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>> = ({children, ...props}) => {
   return (
-    <Container onClick={props.onClick}> 
-      {props.children}
+    <Container {...props}> 
+      {children}
     </Container>
    )
 }

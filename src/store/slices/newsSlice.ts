@@ -20,7 +20,11 @@ export const getAllNews = createAsyncThunk(
   'news/getAllNews',
   async function(_, {rejectWithValue}) {
     try {
-      return getNews()
+      const response = getNews()
+      response.catch((err) => {
+        throw err
+      })
+      return response
     } catch(error: any) {
       return rejectWithValue(error.message)
     }
