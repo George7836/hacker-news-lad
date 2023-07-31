@@ -7,7 +7,11 @@ export const getSingleNews = createAsyncThunk(
   'news/getOnePeaceOfNews',
   async function(id: string | undefined, {rejectWithValue}) {
     try {
-      return getOnePieceOfNews(id)
+      const response = getOnePieceOfNews(id)
+      response.catch((err) => {
+        throw err
+      })
+      return response
     } catch(error: any) {
       return rejectWithValue(error.message)
     }
@@ -48,6 +52,7 @@ const singleNewsSlice = createSlice({
     }),
     builder.addCase(getSingleNews.pending, (state) => {
       state.loading = true
+      state.error = undefined
     }),
     builder.addCase(getSingleNews.rejected, (state, action) => {
       state.loading = false;

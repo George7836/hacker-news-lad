@@ -38,6 +38,7 @@ const newsSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getAllNews.pending, (state) => {
       state.loading = true;
+      state.error = undefined
     }),
     builder.addCase(getAllNews.fulfilled, (state, action: PayloadAction<Array<News>>) => {
       state.loading = false;
