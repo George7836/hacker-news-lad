@@ -23,7 +23,7 @@ type SingleNewsState = {
   id: string 
   loading: boolean
   error?: string
-  updated: boolean
+  updated: number
 }
 
 const initialState: SingleNewsState = {
@@ -31,7 +31,7 @@ const initialState: SingleNewsState = {
   id: '',
   loading: true,
   error: undefined,
-  updated: false
+  updated: 0
 }
 
 const singleNewsSlice = createSlice({
@@ -42,7 +42,7 @@ const singleNewsSlice = createSlice({
       state.id = action.payload
     },
     setUpdateOneNews(state) {
-      state.updated = !state.updated
+      state.updated = Date.now()
     }
   },
   extraReducers: (builder) => {

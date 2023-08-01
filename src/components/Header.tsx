@@ -4,9 +4,9 @@ import { ReactComponent as HackerNewsIcon } from './../assets/icons/hv.svg'
 import { ReactComponent as BackIcon } from './../assets/icons/back.svg'
 import { Button } from './Button'
 import { Link, useLocation } from 'react-router-dom'
-import { getAllNews, setUpdatedNews } from '../store/slices/newsSlice'
+import { setUpdatedNews } from '../store/slices/newsSlice'
 import { useAppDispatch, useAppSelector } from '../types/hooks'
-import { getSingleNews, setUpdateOneNews, userSingleNewsSelector } from '../store/slices/singleNewsSlice'
+import { setUpdateOneNews, userSingleNewsSelector } from '../store/slices/singleNewsSlice'
 import { useCallback } from 'react'
 
 export default function Header() {
@@ -16,11 +16,9 @@ export default function Header() {
 
   const updateItems = useCallback((page: string) => {
     if(page === `/${item.id}`) {
-      dispatch(getSingleNews(item.id))
       dispatch(setUpdateOneNews())
     } 
     if(page === '/') {
-      dispatch(getAllNews())
       dispatch(setUpdatedNews())
     }
   }, [location.pathname, item.id])

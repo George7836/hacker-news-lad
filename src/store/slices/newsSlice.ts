@@ -7,13 +7,13 @@ export interface NewsState {
   loading: boolean;
   news: Array<News>;
   error?: string;
-  updated: boolean;
+  updated: number;
 }
 const initialState: NewsState = {
   loading: false,
   news: [],
   error: undefined,
-  updated: false
+  updated: 0
 }
 
 export const getAllNews = createAsyncThunk(
@@ -36,7 +36,7 @@ const newsSlice = createSlice({
   initialState,
   reducers: {
     setUpdatedNews(state) {
-      state.updated = !state.updated
+      state.updated = Date.now()
     }
   },
   extraReducers: (builder) => {
