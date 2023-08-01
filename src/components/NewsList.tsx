@@ -15,7 +15,7 @@ export default function NewsList() {
     dispatch(getAllNews())
     const interval = setInterval(() => {
       dispatch(getAllNews())
-    }, 15000)
+    }, 60000)
     return () => clearInterval(interval)
   }, [news.updated])
 
