@@ -1,20 +1,7 @@
 
-import { ReactNode } from 'react'
 import { styled } from 'styled-components'
 
-interface ButtonProps extends React.HTMLProps<HTMLButtonElement> {
-  children: ReactNode
-}
-
-export const Button: React.FC<ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>> = ({children, ...props}) => {
-  return (
-    <Container {...props}> 
-      {children}
-    </Container>
-   )
-}
-
-const Container = styled.button`
+export const Button = styled.button`
   width: 42px;
   height: 42px;
   padding: 0;
