@@ -230,7 +230,7 @@ Error generating stack: `+i.message+`
     font-weight: 600;
   }
 `,m2=F.div`
-`,v2={colors:{primary:"#f7f7f7",secondary:"rgb(255,102,0)",elements:"#fff",font:"rgb(36,41,47)",opacity:"rgba(36,41,47,0.1)",shadow:"rgba(1,26,48, 0.05)"}},y2=e=>C.createElement("svg",{width:"32px",height:"32px",viewBox:"0 0 64 64",xmlns:"http://www.w3.org/2000/svg",strokeWidth:3,stroke:"#000000",fill:"none",...e},C.createElement("path",{d:"M53.72,36.61A21.91,21.91,0,1,1,50.37,20.1"}),C.createElement("polyline",{points:"51.72 7.85 50.85 20.78 37.92 19.9"}),C.createElement("path",{d:"M53.72,36.61A21.91,21.91,0,1,1,50.37,20.1"}),C.createElement("polyline",{points:"51.72 7.85 50.85 20.78 37.92 19.9"})),g2=e=>C.createElement("svg",{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 192 192",...e},C.createElement("rect",{x:4,y:4,width:188,height:188,fill:"#f60",stroke:"#fff"}),C.createElement("path",{d:"M 73.25217560011882,45.01 L 96,92.40130083308577 L 118.74782439988117,45.00999999999999 L 138.31352071473736,45.01 L 103.99,109.49661467617327 L 103.99,150.99 L 88.01,150.99 L 88.01,109.49661467617327 L 53.686479285262635,45.010000000000005 Z",fill:"#fff"})),w2=e=>C.createElement("svg",{fill:"#000000",width:"24px",height:"24px",viewBox:"0 0 52 52","data-name":"Layer 1",id:"Layer_1",xmlns:"http://www.w3.org/2000/svg",...e},C.createElement("path",{d:"M50,24H6.83L27.41,3.41a2,2,0,0,0,0-2.82,2,2,0,0,0-2.82,0l-24,24a1.79,1.79,0,0,0-.25.31A1.19,1.19,0,0,0,.25,25c0,.07-.07.13-.1.2l-.06.2a.84.84,0,0,0,0,.17,2,2,0,0,0,0,.78.84.84,0,0,0,0,.17l.06.2c0,.07.07.13.1.2a1.19,1.19,0,0,0,.09.15,1.79,1.79,0,0,0,.25.31l24,24a2,2,0,1,0,2.82-2.82L6.83,28H50a2,2,0,0,0,0-4Z"})),Gd=({children:e,...t})=>_.jsx(S2,{...t,children:e}),S2=F.button`
+`,v2=e=>C.createElement("svg",{width:"32px",height:"32px",viewBox:"0 0 64 64",xmlns:"http://www.w3.org/2000/svg",strokeWidth:3,stroke:"#000000",fill:"none",...e},C.createElement("path",{d:"M53.72,36.61A21.91,21.91,0,1,1,50.37,20.1"}),C.createElement("polyline",{points:"51.72 7.85 50.85 20.78 37.92 19.9"}),C.createElement("path",{d:"M53.72,36.61A21.91,21.91,0,1,1,50.37,20.1"}),C.createElement("polyline",{points:"51.72 7.85 50.85 20.78 37.92 19.9"})),y2=e=>C.createElement("svg",{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 192 192",...e},C.createElement("rect",{x:4,y:4,width:188,height:188,fill:"#f60",stroke:"#fff"}),C.createElement("path",{d:"M 73.25217560011882,45.01 L 96,92.40130083308577 L 118.74782439988117,45.00999999999999 L 138.31352071473736,45.01 L 103.99,109.49661467617327 L 103.99,150.99 L 88.01,150.99 L 88.01,109.49661467617327 L 53.686479285262635,45.010000000000005 Z",fill:"#fff"})),g2=e=>C.createElement("svg",{fill:"#000000",width:"24px",height:"24px",viewBox:"0 0 52 52","data-name":"Layer 1",id:"Layer_1",xmlns:"http://www.w3.org/2000/svg",...e},C.createElement("path",{d:"M50,24H6.83L27.41,3.41a2,2,0,0,0,0-2.82,2,2,0,0,0-2.82,0l-24,24a1.79,1.79,0,0,0-.25.31A1.19,1.19,0,0,0,.25,25c0,.07-.07.13-.1.2l-.06.2a.84.84,0,0,0,0,.17,2,2,0,0,0,0,.78.84.84,0,0,0,0,.17l.06.2c0,.07.07.13.1.2a1.19,1.19,0,0,0,.09.15,1.79,1.79,0,0,0,.25.31l24,24a2,2,0,1,0,2.82-2.82L6.83,28H50a2,2,0,0,0,0-4Z"})),Gd=F.button`
   width: 42px;
   height: 42px;
   padding: 0;
@@ -248,7 +248,7 @@ Error generating stack: `+i.message+`
     text-align: center;
     vertical-align: middle;
   }
-`;function x2(){const e=_c(),t=Tc(Bv),n=Ho(),r=C.useCallback(o=>{o===`/${t.id}`&&e(i2()),o==="/"&&e(Wk())},[n.pathname,t.id]);return _.jsxs(E2,{children:[_.jsxs(k2,{to:"/",children:[_.jsx(g2,{}),_.jsx("h1",{children:"Hacker News"})]}),_.jsxs(C2,{children:[n.pathname!=="/"&&_.jsx(jl,{to:"/",children:_.jsx(Gd,{children:_.jsx(w2,{})})}),_.jsx(Gd,{onClick:()=>r(n.pathname),children:_.jsx(y2,{})})]})]})}const E2=F("header")`
+`;function w2(){const e=_c(),t=Tc(Bv),n=Ho(),r=C.useCallback(o=>{o===`/${t.id}`&&e(i2()),o==="/"&&e(Wk())},[n.pathname,t.id]);return _.jsxs(S2,{children:[_.jsxs(x2,{to:"/",children:[_.jsx(y2,{}),_.jsx("h1",{children:"Hacker News"})]}),_.jsxs(E2,{children:[n.pathname!=="/"&&_.jsx(jl,{to:"/",children:_.jsx(Gd,{children:_.jsx(g2,{})})}),_.jsx(Gd,{onClick:()=>r(n.pathname),children:_.jsx(v2,{})})]})]})}const S2=F("header")`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -256,7 +256,7 @@ Error generating stack: `+i.message+`
   box-shadow: 0px 1px 0px ${({theme:e})=>e.colors.shadow};
   margin-bottom: 40px;
   background-color: ${({theme:e})=>e.colors.elements};
-`,k2=F(jl)`
+`,x2=F(jl)`
   display: flex;
   align-items: center;
   font-size: 16px;
@@ -269,14 +269,18 @@ Error generating stack: `+i.message+`
     margin-left: 10px;
     font-size: inherit;
   }
-`,C2=F.div`
+`,E2=F.div`
   display: flex;
   align-items: center;
 
   & > *:not(:last-child) {
     margin-right: 15px;
   }
-`,P2=Ew`
+`;function k2(){return _.jsxs(_.Fragment,{children:[_.jsx(w2,{}),_.jsx(C2,{children:_.jsx(u1,{})})]})}const C2=F.div`
+  max-width: 1060px;
+	padding: 0 30px;
+  margin: 0 auto;
+`;function P2(){return _.jsx(c1,{children:_.jsxs(Xr,{path:"/",element:_.jsx(k2,{}),children:[_.jsx(Xr,{index:!0,element:_.jsx(Qk,{})}),_.jsx(Xr,{path:"/:id",element:_.jsx(s2,{})}),_.jsx(Xr,{path:"*",element:_.jsx(Wv,{})})]})})}const O2={colors:{primary:"#f7f7f7",secondary:"rgb(255,102,0)",elements:"#fff",font:"rgb(36,41,47)",opacity:"rgba(36,41,47,0.1)",shadow:"rgba(1,26,48, 0.05)"}},_2=Ew`
   body {
     font-family: 'Inter', sans-serif;
     background-color: ${({theme:e})=>e.colors.primary};
@@ -289,8 +293,4 @@ Error generating stack: `+i.message+`
     padding: 0;
     margin: 0;
   }
-`;function O2(){return _.jsxs(ww,{theme:v2,children:[_.jsx(P2,{}),_.jsx(x2,{}),_.jsx(_2,{children:_.jsx(u1,{})})]})}const _2=F.div`
-  max-width: 1060px;
-	padding: 0 30px;
-  margin: 0 auto;
-`;function T2(){return _.jsx(c1,{children:_.jsxs(Xr,{path:"/",element:_.jsx(O2,{}),children:[_.jsx(Xr,{index:!0,element:_.jsx(Qk,{})}),_.jsx(Xr,{path:"/:id",element:_.jsx(s2,{})}),_.jsx(Xr,{path:"*",element:_.jsx(Wv,{})})]})})}function R2(){return _.jsx(v1,{basename:"/hacker-news/",children:_.jsx(T2,{})})}const N2=hE({reducer:{news:Hk,single:l2}});ou.createRoot(document.getElementById("root")).render(_.jsx(De.StrictMode,{children:_.jsx(Lx,{store:N2,children:_.jsx(R2,{})})}));
+`;function T2(){return _.jsx(v1,{basename:"/hacker-news/",children:_.jsxs(ww,{theme:O2,children:[_.jsx(_2,{}),_.jsx(P2,{})]})})}const R2=hE({reducer:{news:Hk,single:l2}});ou.createRoot(document.getElementById("root")).render(_.jsx(De.StrictMode,{children:_.jsx(Lx,{store:R2,children:_.jsx(T2,{})})}));
