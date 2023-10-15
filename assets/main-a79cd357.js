@@ -293,4 +293,4 @@ Error generating stack: `+i.message+`
     padding: 0;
     margin: 0;
   }
-`;function T2(){return _.jsx(v1,{basename:"/hacker-news/",children:_.jsxs(ww,{theme:O2,children:[_.jsx(_2,{}),_.jsx(P2,{})]})})}const R2=hE({reducer:{news:Hk,single:l2}});ou.createRoot(document.getElementById("root")).render(_.jsx(De.StrictMode,{children:_.jsx(Lx,{store:R2,children:_.jsx(T2,{})})}));
+`;function T2(){return _.jsx(v1,{basename:"/hacker-news-lad/",children:_.jsxs(ww,{theme:O2,children:[_.jsx(_2,{}),_.jsx(P2,{})]})})}const R2=hE({reducer:{news:Hk,single:l2}});ou.createRoot(document.getElementById("root")).render(_.jsx(De.StrictMode,{children:_.jsx(Lx,{store:R2,children:_.jsx(T2,{})})}));
