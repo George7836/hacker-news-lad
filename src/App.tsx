@@ -6,7 +6,7 @@ import GlobalStyles from './styles/GlobalStyles'
 
 function App() {
   return (
-    <BrowserRouter basename='/hacker-news/'>
+    <BrowserRouter basename='/hacker-news-lad/'>
       <ThemeProvider theme={theme}>
         <GlobalStyles/>
         <AppRouter/>
